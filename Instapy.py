@@ -36,7 +36,7 @@ class SearchRelationOfClass:
 
             if node not in path:
 
-                newpath = find_path(graph, node, end, path)
+                newpath = SearchRelationOfClass.find_path(graph, node, end, path)
 
                 if newpath:
                     return newpath
