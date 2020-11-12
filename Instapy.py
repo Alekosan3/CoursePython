@@ -13,7 +13,6 @@ class SearchRelationOfClass:
             if len(l) > 1: # Если список состоит из двух элементов то добавляем в словарь ключ и список со значениями
 
                 self.dictor.update({l[0]:l[1].split(' ')})
-                print(self.dictor)
 
             else: # Иначе если список состоит только с одним значением то создаем ключ с пустым списком
 
@@ -21,9 +20,10 @@ class SearchRelationOfClass:
 
     def print_all_list(self):
 
-        print(self.dictor.items()) # Выводим все что есть в словаре чтобы проверить правильно ли попадают значения туда
+        print(self.dictor) # Выводим все что есть в словаре чтобы проверить правильно ли попадают значения туда
 
-    def find_path(graph, start, end, path=[]):
+    def find_path(self, start, end, path=[]):
+        graph = self.dictor
 
         path = path + [start]
 
@@ -46,6 +46,22 @@ class SearchRelationOfClass:
 
         return None
 
+    def has_relation_between_two_classes(self, n):
+
+        for i in range(n):
+            l = input().split(' ')
+            m = self.find_path(l[0],l[1])
+
+            if type(m) != type(None):
+                if l[1] in m:
+                    print('Yes')
+                else:
+                    print('NO')
+            else:
+                print('NO')
+
 searcher = SearchRelationOfClass(5)
 
 searcher.print_all_list()
+
+relation_class = searcher.find_path()
