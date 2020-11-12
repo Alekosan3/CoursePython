@@ -17,6 +17,7 @@ class SearchRelationOfClass:
                 self.dictor.update({l[0]:[]})
 
     def print_all_list(self):
+
         print(self.dictor.items())
 
     def find_path(graph, start, end, path=[]):
