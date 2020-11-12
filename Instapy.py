@@ -23,6 +23,7 @@ class SearchRelationOfClass:
         print(self.dictor) # Выводим все что есть в словаре чтобы проверить правильно ли попадают значения туда
 
     def find_path(self, start, end, path=[]):
+
         graph = self.dictor
 
         path = path + [start]
@@ -39,7 +40,7 @@ class SearchRelationOfClass:
 
             if node not in path:
 
-                newpath = SearchRelationOfClass.find_path(graph, node, end, path)
+                newpath = SearchRelationOfClass.find_path(node, end, path)
 
                 if newpath:
                     return newpath
@@ -50,9 +51,12 @@ class SearchRelationOfClass:
 
         for i in range(n):
             l = input().split(' ')
-            m = self.find_path(l[0],l[1])
+            print(l)
+            self.print_all_list()
+            m = self.find_path(l[1],l[0])
 
             if type(m) != type(None):
+                print('inside')
                 if l[1] in m:
                     print('Yes')
                 else:
@@ -60,8 +64,8 @@ class SearchRelationOfClass:
             else:
                 print('NO')
 
-searcher = SearchRelationOfClass(5)
+searcher = SearchRelationOfClass(int(input()))
 
 searcher.print_all_list()
 
-relation_class = searcher.find_path()
+relation_class = searcher.has_relation_between_two_classes(int(input()))
