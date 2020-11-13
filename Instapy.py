@@ -1,21 +1,16 @@
 
 class SearchRelationOfClass:
     def __init__(self, n):
-
         self.dictor = {} # Создаем словарь чтобы туда поместить Граф. Значения которые мы потом будем перебирать
 
         for i in range(n):
-
             l = input().split(':') # разбиваем введенное значение на ключ и значение. Значением будет список
             l = [el.strip() for el in l] # убираем лишние пробелы справа и слева чтобы не получить левые данные
 
-
             if len(l) > 1: # Если список состоит из двух элементов то добавляем в словарь ключ и список со значениями
-
                 self.dictor.update({l[0]:l[1].split(' ')})
 
             else: # Иначе если список состоит только с одним значением то создаем ключ с пустым списком
-
                 self.dictor.update({l[0]:[]})
 
     def print_all_list(self):
@@ -29,19 +24,14 @@ class SearchRelationOfClass:
         path = path + [start]
 
         if start == end:
-
             return path
 
         if not start in graph:
-
             return None
 
         for node in graph[start]:
-
             if node not in path:
-
-                newpath = SearchRelationOfClass.find_path(node, end, path)
-
+                newpath = SearchRelationOfClass.find_path(self, node, end, path)
                 if newpath:
                     return newpath
 
@@ -51,12 +41,9 @@ class SearchRelationOfClass:
 
         for i in range(n):
             l = input().split(' ')
-            print(l)
-            self.print_all_list()
             m = self.find_path(l[1],l[0])
 
             if type(m) != type(None):
-                print('inside')
                 if l[1] in m:
                     print('Yes')
                 else:
@@ -64,8 +51,7 @@ class SearchRelationOfClass:
             else:
                 print('NO')
 
+
 searcher = SearchRelationOfClass(int(input()))
 
-searcher.print_all_list()
-
-relation_class = searcher.has_relation_between_two_classes(int(input()))
+searcher.has_relation_between_two_classes(int(input()))
